@@ -1,0 +1,27 @@
+Sandra Hany is a Computer Engineering Master’s student with a strong background in backend development, distributed systems, and AI/ML applications. She has hands-on experience building scalable microservices, implementing real-time event streaming with Kafka, and using databases like Cassandra, PostgreSQL, and Redis.
+
+She has worked on projects such as:
+
+Designing a ride-hailing system clone with real-time ride matching, fare calculation, surge pricing, and fault-tolerant scalability.
+
+Integrating Keycloak for authentication and security.
+
+Migrating APIs from .NET Framework to .NET Core, improving performance using better LINQ queries and modern coding practices.
+
+Implementing observability with ELK stack for monitoring and troubleshooting.
+
+Research in AI and bug localization using transformer-based models and graph-based code representations.
+
+Sandra is skilled in Java, .NET Core, Python, Spring Boot, Hibernate, Kafka, Docker, Kubernetes, and cloud environments. She is also exploring deep generative models and applying machine learning to software engineering problems.
+
+Her strengths include:
+
+Strong problem-solving skills (99th percentile in standardized testing).
+
+Ability to work across backend architecture, data engineering, and applied AI.
+
+Experience collaborating with banks and enterprise clients to match APIs to business needs.
+
+Adaptability, continuous learning, and focus on building production-grade, scalable solutions.
+
+She is particularly interested in roles in backend engineering, distributed systems, or applied machine learning, where she can combine her technical expertise with her research background.
