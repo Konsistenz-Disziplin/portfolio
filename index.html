@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Chen - Software Engineer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .chat-bubble-user {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .chat-bubble-bot {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            transition: transform 0.2s ease;
+        }
+        
+        /* Sliding animations */
+        .slide-container {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .slide-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: calc(200% + 2rem);
+        }
+        
+        .slide-item {
+            flex: 0 0 auto;
+            margin-right: 2rem;
+        }
+        
+        .slide-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            color: #6b21a8;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .slide-nav:hover {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .slide-nav.prev {
+            left: 10px;
+        }
+        
+        .slide-nav.next {
+            right: 10px;
+        }
+        
+        /* Book cover styles */
+        .book-cover {
+            width: 120px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .book-cover:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <div class="w-32 h-32 bg-white rounded-full mx-auto mb-6 flex items-center justify-center text-6xl">
+                👨‍💻
+            </div>
+            <h1 class="text-5xl font-bold mb-4">Sandra Hany</h1>
+            <p class="text-xl mb-6">Full-Stack Software Engineer</p>
+            <p class="text-lg max-w-2xl mx-auto">Passionate about building scalable applications and solving complex problems with clean, efficient code.</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center space-x-6 py-4">
+                <a href="#education" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Education</a>
+                <a href="#experience" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Experience</a>
+                <a href="#projects" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Projects</a>
+                <a href="#skills" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Skills</a>
+                <a href="#books" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Books</a>
+                <a href="#certificates" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Certificates</a>
+                <a href="#contact" class="text-gray-700 hover:text-purple-600 font-medium transition-colors">Contact</a>
+                <button onclick="toggleChatbot()" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">💬 Ask Me</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <!-- Education -->
+        <section id="education" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Education</h2>
+            <div class="space-y-6">
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-600">Master of Science in Computer Engineering</h3>
+                            <p class="text-gray-600">Cairo University</p>
+                            <p class="text-gray-500 text-sm">Specialization: Artificial Intelligence & Machine Learning</p>
+                        </div>
+                        <span class="text-gray-500">2024 - 2026</span>
+                    </div>
+                    <ul class="text-gray-700 space-y-2">
+                        <li>• GPA: 3.3/4.0</li>
+                        <li>• Thesis: Ongoing</li>
+                        <li>• Relevant Coursework: Advanced Algorithms, Machine Learning, Database Systems, Computer Networks</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-600">Bachelor of Science in Software Engineering</h3>
+                            <p class="text-gray-600">University of California, Berkeley</p>
+                            <p class="text-gray-500 text-sm">Minor: Mathematics</p>
+                        </div>
+                        <span class="text-gray-500">2013 - 2017</span>
+                    </div>
+                    <ul class="text-gray-700 space-y-2">
+                        <li>• Grade : Very Good</li>
+                        <li>• Relevant Coursework: Data Structures & Algorithms, Pattern Recognition & Machine Learning, Database Systems, Computer Networks</li>
+                        <li>• Graduation Project : Excellent</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Work Experience -->
+        <section id="experience" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Work Experience</h2>
+            <div class="space-y-8">
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-600">Senior API Developer</h3>
+                            <p class="text-gray-600">Network International</p>
+                        </div>
+                        <span class="text-gray-500">2024 - Present</span>
+                    </div>
+                    <ul class="text-gray-700 space-y-2">
+                        <li>• Led development of microservices architecture serving 1M+ users</li>
+                        <li>• Reduced system latency by 40% through database optimization</li>
+                        <li>• Mentored 3 junior developers and conducted code reviews</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-600">Software Engineer</h3>
+                            <p class="text-gray-600">StartupXYZ</p>
+                        </div>
+                        <span class="text-gray-500">2020 - 2022</span>
+                    </div>
+                    <ul class="text-gray-700 space-y-2">
+                        <li>• Built full-stack web applications using React and Node.js</li>
+                        <li>• Implemented CI/CD pipelines reducing deployment time by 60%</li>
+                        <li>• Collaborated with product team to deliver features on tight deadlines</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-600">Junior Developer</h3>
+                            <p class="text-gray-600">WebDev Agency</p>
+                        </div>
+                        <span class="text-gray-500">2019 - 2020</span>
+                    </div>
+                    <ul class="text-gray-700 space-y-2">
+                        <li>• Developed responsive websites for 20+ clients</li>
+                        <li>• Learned modern JavaScript frameworks and best practices</li>
+                        <li>• Participated in agile development processes</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Featured Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-purple-600">E-Commerce Platform</h3>
+                        <p class="text-gray-600 mb-4">Full-stack e-commerce solution with payment integration, inventory management, and admin dashboard.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">React</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">Node.js</span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm">MongoDB</span>
+                        </div>
+                        <a href="#" class="text-purple-600 hover:underline">View on GitHub →</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-purple-600">Task Management App</h3>
+                        <p class="text-gray-600 mb-4">Real-time collaborative task management with drag-and-drop functionality and team features.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">Vue.js</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-sm">Firebase</span>
+                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-sm">Socket.io</span>
+                        </div>
+                        <a href="#" class="text-purple-600 hover:underline">View on GitHub →</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-purple-600">Weather Analytics API</h3>
+                        <p class="text-gray-600 mb-4">RESTful API providing weather data analytics with machine learning predictions.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-sm">Python</span>
+                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-sm">FastAPI</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-sm">PostgreSQL</span>
+                        </div>
+                        <a href="#" class="text-purple-600 hover:underline">View on GitHub →</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-purple-600">Mobile Banking App</h3>
+                        <p class="text-gray-600 mb-4">Secure mobile banking application with biometric authentication and real-time transactions.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded text-sm">React Native</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">Node.js</span>
+                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-sm">Redis</span>
+                        </div>
+                        <a href="#" class="text-purple-600 hover:underline">View on GitHub →</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-purple-600">AI Chatbot Assistant</h3>
+                        <p class="text-gray-600 mb-4">Intelligent conversational AI with natural language processing and context awareness for customer support.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-sm">Python</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">OpenAI API</span>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">FastAPI</span>
+                        </div>
+                        <a href="#" class="text-purple-600 hover:underline">View on GitHub →</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-purple-600">Computer Vision Analytics</h3>
+                        <p class="text-gray-600 mb-4">Real-time object detection and image classification system for retail inventory management.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-sm">PyTorch</span>
+                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-sm">OpenCV</span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm">Docker</span>
+                        </div>
+                        <a href="#" class="text-purple-600 hover:underline">View on GitHub →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Technical Skills</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-lg font-bold mb-4 text-purple-600">Languages</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm cursor-pointer">JavaScript</span>
+                        <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm cursor-pointer">TypeScript</span>
+                        <span class="skill-tag bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm cursor-pointer">Python</span>
+                        <span class="skill-tag bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm cursor-pointer">Java</span>
+                        <span class="skill-tag bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm cursor-pointer">C++</span>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-lg font-bold mb-4 text-purple-600">Frontend</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm cursor-pointer">React</span>
+                        <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm cursor-pointer">Vue.js</span>
+                        <span class="skill-tag bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm cursor-pointer">Next.js</span>
+                        <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm cursor-pointer">Tailwind CSS</span>
+                        <span class="skill-tag bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm cursor-pointer">Angular</span>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-lg font-bold mb-4 text-purple-600">Backend</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm cursor-pointer">Node.js</span>
+                        <span class="skill-tag bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm cursor-pointer">Express</span>
+                        <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm cursor-pointer">FastAPI</span>
+                        <span class="skill-tag bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm cursor-pointer">Django</span>
+                        <span class="skill-tag bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm cursor-pointer">Spring Boot</span>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-lg font-bold mb-4 text-purple-600">Database & Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm cursor-pointer">MongoDB</span>
+                        <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm cursor-pointer">PostgreSQL</span>
+                        <span class="skill-tag bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm cursor-pointer">Docker</span>
+                        <span class="skill-tag bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm cursor-pointer">AWS</span>
+                        <span class="skill-tag bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm cursor-pointer">Redis</span>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-lg font-bold mb-4 text-purple-600">DevOps & Cloud</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm cursor-pointer">Kubernetes</span>
+                        <span class="skill-tag bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm cursor-pointer">Terraform</span>
+                        <span class="skill-tag bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm cursor-pointer">Jenkins</span>
+                        <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm cursor-pointer">GitHub Actions</span>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-lg font-bold mb-4 text-purple-600">AI & Machine Learning</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm cursor-pointer">TensorFlow</span>
+                        <span class="skill-tag bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm cursor-pointer">PyTorch</span>
+                        <span class="skill-tag bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm cursor-pointer">Scikit-learn</span>
+                        <span class="skill-tag bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm cursor-pointer">OpenAI API</span>
+                        <span class="skill-tag bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm cursor-pointer">Hugging Face</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Books Read -->
+        <section id="books" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Books That Shaped My Thinking</h2>
+            <div class="slide-container" id="books-slider">
+                <button class="slide-nav prev" onclick="slideBooks('prev')">‹</button>
+                <button class="slide-nav next" onclick="slideBooks('next')">›</button>
+                <div class="slide-track" id="books-track">
+                    <div class="slide-item">
+                        <div class="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow w-80">
+                            <div class="flex items-center">
+                                <svg class="book-cover mr-4" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="120" height="160" fill="#2563eb" rx="4"/>
+                                    <rect x="10" y="20" width="100" height="120" fill="#1e40af" rx="2"/>
+                                    <text x="60" y="50" text-anchor="middle" fill="white" font-size="12" font-weight="bold">CLEAN</text>
+                                    <text x="60" y="70" text-anchor="middle" fill="white" font-size="12" font-weight="bold">CODE</text>
+                                    <text x="60" y="100" text-anchor="middle" fill="#93c5fd" font-size="8">Robert C. Martin</text>
+                                </svg>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-2">Clean Code</h3>
+                                    <p class="text-gray-600 text-sm mb-2">by Robert C. Martin</p>
+                                    <p class="text-gray-700 text-sm">Essential principles for writing maintainable and readable code.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slide-item">
+                        <div class="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow w-80">
+                            <div class="flex items-center">
+                                <svg class="book-cover mr-4" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="120" height="160" fill="#dc2626" rx="4"/>
+                                    <rect x="10" y="20" width="100" height="120" fill="#b91c1c" rx="2"/>
+                                    <text x="60" y="45" text-anchor="middle" fill="white" font-size="10" font-weight="bold">SYSTEM</text>
+                                    <text x="60" y="60" text-anchor="middle" fill="white" font-size="10" font-weight="bold">DESIGN</text>
+                                    <text x="60" y="75" text-anchor="middle" fill="white" font-size="10" font-weight="bold">INTERVIEW</text>
+                                    <text x="60" y="100" text-anchor="middle" fill="#fca5a5" font-size="8">Alex Xu</text>
+                                </svg>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-2">System Design Interview</h3>
+                                    <p class="text-gray-600 text-sm mb-2">by Alex Xu</p>
+                                    <p class="text-gray-700 text-sm">Comprehensive guide to designing scalable systems.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slide-item">
+                        <div class="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow w-80">
+                            <div class="flex items-center">
+                                <svg class="book-cover mr-4" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="120" height="160" fill="#059669" rx="4"/>
+                                    <rect x="10" y="20" width="100" height="120" fill="#047857" rx="2"/>
+                                    <text x="60" y="45" text-anchor="middle" fill="white" font-size="9" font-weight="bold">THE</text>
+                                    <text x="60" y="60" text-anchor="middle" fill="white" font-size="9" font-weight="bold">PRAGMATIC</text>
+                                    <text x="60" y="75" text-anchor="middle" fill="white" font-size="9" font-weight="bold">PROGRAMMER</text>
+                                    <text x="60" y="100" text-anchor="middle" fill="#6ee7b7" font-size="8">David Thomas</text>
+                                </svg>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-2">The Pragmatic Programmer</h3>
+                                    <p class="text-gray-600 text-sm mb-2">by David Thomas</p>
+                                    <p class="text-gray-700 text-sm">Timeless tips for becoming a better programmer.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slide-item">
+                        <div class="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow w-80">
+                            <div class="flex items-center">
+                                <svg class="book-cover mr-4" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="120" height="160" fill="#7c3aed" rx="4"/>
+                                    <rect x="10" y="20" width="100" height="120" fill="#6d28d9" rx="2"/>
+                                    <text x="60" y="40" text-anchor="middle" fill="white" font-size="8" font-weight="bold">DESIGNING</text>
+                                    <text x="60" y="55" text-anchor="middle" fill="white" font-size="8" font-weight="bold">DATA-INTENSIVE</text>
+                                    <text x="60" y="70" text-anchor="middle" fill="white" font-size="8" font-weight="bold">APPLICATIONS</text>
+                                    <text x="60" y="100" text-anchor="middle" fill="#c4b5fd" font-size="8">Martin Kleppmann</text>
+                                </svg>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-2">Designing Data-Intensive Applications</h3>
+                                    <p class="text-gray-600 text-sm mb-2">by Martin Kleppmann</p>
+                                    <p class="text-gray-700 text-sm">Deep dive into modern data systems and architectures.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slide-item">
+                        <div class="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow w-80">
+                            <div class="flex items-center">
+                                <svg class="book-cover mr-4" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="120" height="160" fill="#f59e0b" rx="4"/>
+                                    <rect x="10" y="20" width="100" height="120" fill="#d97706" rx="2"/>
+                                    <text x="60" y="45" text-anchor="middle" fill="white" font-size="10" font-weight="bold">YOU DON'T</text>
+                                    <text x="60" y="60" text-anchor="middle" fill="white" font-size="10" font-weight="bold">KNOW</text>
+                                    <text x="60" y="75" text-anchor="middle" fill="white" font-size="10" font-weight="bold">JS</text>
+                                    <text x="60" y="100" text-anchor="middle" fill="#fcd34d" font-size="8">Kyle Simpson</text>
+                                </svg>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-2">You Don't Know JS</h3>
+                                    <p class="text-gray-600 text-sm mb-2">by Kyle Simpson</p>
+                                    <p class="text-gray-700 text-sm">Advanced JavaScript concepts and best practices.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slide-item">
+                        <div class="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow w-80">
+                            <div class="flex items-center">
+                                <svg class="book-cover mr-4" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="120" height="160" fill="#0891b2" rx="4"/>
+                                    <rect x="10" y="20" width="100" height="120" fill="#0e7490" rx="2"/>
+                                    <text x="60" y="55" text-anchor="middle" fill="white" font-size="12" font-weight="bold">REFACTORING</text>
+                                    <text x="60" y="100" text-anchor="middle" fill="#67e8f9" font-size="8">Martin Fowler</text>
+                                </svg>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-2">Refactoring</h3>
+                                    <p class="text-gray-600 text-sm mb-2">by Martin Fowler</p>
+                                    <p class="text-gray-700 text-sm">Improving code structure without changing functionality.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slide-item">
+                        <div class="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow w-80">
+                            <div class="flex items-center">
+                                <svg class="book-cover mr-4" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="120" height="160" fill="#8b5cf6" rx="4"/>
+                                    <rect x="10" y="20" width="100" height="120" fill="#7c3aed" rx="2"/>
+                                    <text x="60" y="40" text-anchor="middle" fill="white" font-size="9" font-weight="bold">HANDS-ON</text>
+                                    <text x="60" y="55" text-anchor="middle" fill="white" font-size="9" font-weight="bold">MACHINE</text>
+                                    <text x="60" y="70" text-anchor="middle" fill="white" font-size="9" font-weight="bold">LEARNING</text>
+                                    <text x="60" y="100" text-anchor="middle" fill="#c4b5fd" font-size="8">Aurélien Géron</text>
+                                </svg>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-2">Hands-On Machine Learning</h3>
+                                    <p class="text-gray-600 text-sm mb-2">by Aurélien Géron</p>
+                                    <p class="text-gray-700 text-sm">Practical guide to ML with Scikit-Learn and TensorFlow.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slide-item">
+                        <div class="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow w-80">
+                            <div class="flex items-center">
+                                <svg class="book-cover mr-4" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="120" height="160" fill="#ec4899" rx="4"/>
+                                    <rect x="10" y="20" width="100" height="120" fill="#db2777" rx="2"/>
+                                    <text x="60" y="45" text-anchor="middle" fill="white" font-size="10" font-weight="bold">DEEP</text>
+                                    <text x="60" y="60" text-anchor="middle" fill="white" font-size="10" font-weight="bold">LEARNING</text>
+                                    <text x="60" y="100" text-anchor="middle" fill="#f9a8d4" font-size="8">Ian Goodfellow</text>
+                                </svg>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-2">Deep Learning</h3>
+                                    <p class="text-gray-600 text-sm mb-2">by Ian Goodfellow</p>
+                                    <p class="text-gray-700 text-sm">Comprehensive textbook on deep learning fundamentals.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slide-item">
+                        <div class="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow w-80">
+                            <div class="flex items-center">
+                                <svg class="book-cover mr-4" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="120" height="160" fill="#10b981" rx="4"/>
+                                    <rect x="10" y="20" width="100" height="120" fill="#059669" rx="2"/>
+                                    <text x="60" y="40" text-anchor="middle" fill="white" font-size="8" font-weight="bold">ARTIFICIAL</text>
+                                    <text x="60" y="55" text-anchor="middle" fill="white" font-size="8" font-weight="bold">INTELLIGENCE</text>
+                                    <text x="60" y="70" text-anchor="middle" fill="white" font-size="8" font-weight="bold">A MODERN</text>
+                                    <text x="60" y="85" text-anchor="middle" fill="white" font-size="8" font-weight="bold">APPROACH</text>
+                                    <text x="60" y="110" text-anchor="middle" fill="#6ee7b7" font-size="8">Stuart Russell</text>
+                                </svg>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-2">AI: A Modern Approach</h3>
+                                    <p class="text-gray-600 text-sm mb-2">by Stuart Russell</p>
+                                    <p class="text-gray-700 text-sm">Comprehensive introduction to artificial intelligence concepts.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Duplicate items for seamless loop -->
+                    <div class="slide-item">
+                        <div class="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow w-80">
+                            <div class="flex items-center">
+                                <svg class="book-cover mr-4" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="120" height="160" fill="#2563eb" rx="4"/>
+                                    <rect x="10" y="20" width="100" height="120" fill="#1e40af" rx="2"/>
+                                    <text x="60" y="50" text-anchor="middle" fill="white" font-size="12" font-weight="bold">CLEAN</text>
+                                    <text x="60" y="70" text-anchor="middle" fill="white" font-size="12" font-weight="bold">CODE</text>
+                                    <text x="60" y="100" text-anchor="middle" fill="#93c5fd" font-size="8">Robert C. Martin</text>
+                                </svg>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-2">Clean Code</h3>
+                                    <p class="text-gray-600 text-sm mb-2">by Robert C. Martin</p>
+                                    <p class="text-gray-700 text-sm">Essential principles for writing maintainable and readable code.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slide-item">
+                        <div class="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow w-80">
+                            <div class="flex items-center">
+                                <svg class="book-cover mr-4" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="120" height="160" fill="#dc2626" rx="4"/>
+                                    <rect x="10" y="20" width="100" height="120" fill="#b91c1c" rx="2"/>
+                                    <text x="60" y="45" text-anchor="middle" fill="white" font-size="10" font-weight="bold">SYSTEM</text>
+                                    <text x="60" y="60" text-anchor="middle" fill="white" font-size="10" font-weight="bold">DESIGN</text>
+                                    <text x="60" y="75" text-anchor="middle" fill="white" font-size="10" font-weight="bold">INTERVIEW</text>
+                                    <text x="60" y="100" text-anchor="middle" fill="#fca5a5" font-size="8">Alex Xu</text>
+                                </svg>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-2">System Design Interview</h3>
+                                    <p class="text-gray-600 text-sm mb-2">by Alex Xu</p>
+                                    <p class="text-gray-700 text-sm">Comprehensive guide to designing scalable systems.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates -->
+        <section id="certificates" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Certifications</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">☁️</div>
+                        <h3 class="font-bold text-lg mb-2">AWS Solutions Architect</h3>
+                        <p class="text-gray-600 text-sm mb-3">Amazon Web Services</p>
+                        <p class="text-purple-600 font-medium">Professional Level</p>
+                        <p class="text-gray-500 text-sm mt-2">Issued: March 2023</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">🐳</div>
+                        <h3 class="font-bold text-lg mb-2">Certified Kubernetes Administrator</h3>
+                        <p class="text-gray-600 text-sm mb-3">Cloud Native Computing Foundation</p>
+                        <p class="text-purple-600 font-medium">CKA</p>
+                        <p class="text-gray-500 text-sm mt-2">Issued: January 2023</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">🔒</div>
+                        <h3 class="font-bold text-lg mb-2">Certified Ethical Hacker</h3>
+                        <p class="text-gray-600 text-sm mb-3">EC-Council</p>
+                        <p class="text-purple-600 font-medium">CEH v11</p>
+                        <p class="text-gray-500 text-sm mt-2">Issued: September 2022</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">🧠</div>
+                        <h3 class="font-bold text-lg mb-2">TensorFlow Developer Certificate</h3>
+                        <p class="text-gray-600 text-sm mb-3">Google</p>
+                        <p class="text-purple-600 font-medium">Machine Learning</p>
+                        <p class="text-gray-500 text-sm mt-2">Issued: June 2022</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">⚛️</div>
+                        <h3 class="font-bold text-lg mb-2">React Developer Certification</h3>
+                        <p class="text-gray-600 text-sm mb-3">Meta (Facebook)</p>
+                        <p class="text-purple-600 font-medium">Advanced React</p>
+                        <p class="text-gray-500 text-sm mt-2">Issued: April 2022</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">📊</div>
+                        <h3 class="font-bold text-lg mb-2">Professional Scrum Master</h3>
+                        <p class="text-gray-600 text-sm mb-3">Scrum.org</p>
+                        <p class="text-purple-600 font-medium">PSM I</p>
+                        <p class="text-gray-500 text-sm mt-2">Issued: February 2022</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Let's Connect</h2>
+            <div class="bg-white rounded-lg shadow-lg p-8 max-w-2xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-6 text-center">
+                    <a href="mailto:alex.chen@email.com" class="flex flex-col items-center p-4 hover:bg-gray-50 rounded-lg transition-colors">
+                        <div class="text-3xl mb-2">📧</div>
+                        <h3 class="font-bold mb-1">Email</h3>
+                        <p class="text-purple-600">alex.chen@email.com</p>
+                    </a>
+
+                    <a href="https://github.com/alexchen" target="_blank" class="flex flex-col items-center p-4 hover:bg-gray-50 rounded-lg transition-colors">
+                        <div class="text-3xl mb-2">🐙</div>
+                        <h3 class="font-bold mb-1">GitHub</h3>
+                        <p class="text-purple-600">github.com/alexchen</p>
+                    </a>
+
+                    <a href="https://linkedin.com/in/alexchen" target="_blank" class="flex flex-col items-center p-4 hover:bg-gray-50 rounded-lg transition-colors">
+                        <div class="text-3xl mb-2">💼</div>
+                        <h3 class="font-bold mb-1">LinkedIn</h3>
+                        <p class="text-purple-600">linkedin.com/in/alexchen</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Chatbot -->
+    <div id="chatbot" class="fixed bottom-6 right-6 w-80 bg-white rounded-lg shadow-2xl border hidden z-50">
+        <div class="gradient-bg text-white p-4 rounded-t-lg flex justify-between items-center">
+            <h3 class="font-bold">Ask me anything! 🤖</h3>
+            <button onclick="toggleChatbot()" class="text-white hover:text-gray-200">✕</button>
+        </div>
+        
+        <div id="chatMessages" class="h-64 overflow-y-auto p-4 space-y-3">
+            <div class="flex items-start space-x-2">
+                <div class="w-8 h-8 bg-gradient-to-r from-pink-400 to-red-400 rounded-full flex items-center justify-center text-white text-sm">🤖</div>
+                <div class="chat-bubble-bot text-white p-3 rounded-lg max-w-xs">
+                    Hi! I'm Alex's AI assistant. Ask me about his experience, skills, projects, or anything else!
+                </div>
+            </div>
+        </div>
+        
+        <div class="p-4 border-t">
+            <div class="flex space-x-2">
+                <input type="text" id="chatInput" placeholder="Ask about Alex's background..." 
+                       class="flex-1 border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <button onclick="sendMessage()" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">
+                    Send
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sliding functionality
+        let projectsIndex = 0;
+        let skillsIndex = 0;
+        let booksIndex = 0;
+        
+        function slideProjects(direction) {
+            const track = document.getElementById('projects-track');
+            const items = track.children;
+            const itemWidth = items[0].offsetWidth + 32; // width + margin
+            const uniqueItems = 6; // Number of unique projects
+            const maxIndex = uniqueItems - 1;
+            
+            if (direction === 'next') {
+                projectsIndex = projectsIndex >= maxIndex ? 0 : projectsIndex + 1;
+            } else {
+                projectsIndex = projectsIndex <= 0 ? maxIndex : projectsIndex - 1;
+            }
+            
+            track.style.transform = `translateX(-${projectsIndex * itemWidth}px)`;
+        }
+        
+        function slideSkills(direction) {
+            const track = document.getElementById('skills-track');
+            const items = track.children;
+            const itemWidth = items[0].offsetWidth + 32; // width + margin
+            const uniqueItems = 6; // Number of unique skill categories
+            const maxIndex = uniqueItems - 1;
+            
+            if (direction === 'next') {
+                skillsIndex = skillsIndex >= maxIndex ? 0 : skillsIndex + 1;
+            } else {
+                skillsIndex = skillsIndex <= 0 ? maxIndex : skillsIndex - 1;
+            }
+            
+            track.style.transform = `translateX(-${skillsIndex * itemWidth}px)`;
+        }
+        
+        function slideBooks(direction) {
+            const track = document.getElementById('books-track');
+            const items = track.children;
+            const itemWidth = items[0].offsetWidth + 32; // width + margin
+            const uniqueItems = 9; // Number of unique books
+            const maxIndex = uniqueItems - 1;
+            
+            if (direction === 'next') {
+                booksIndex = booksIndex >= maxIndex ? 0 : booksIndex + 1;
+            } else {
+                booksIndex = booksIndex <= 0 ? maxIndex : booksIndex - 1;
+            }
+            
+            track.style.transform = `translateX(-${booksIndex * itemWidth}px)`;
+        }
+
+        // Chatbot functionality
+        const knowledgeBase = {
+            experience: {
+                keywords: ['experience', 'work', 'job', 'career', 'employment', 'company'],
+                response: "Alex has 4+ years of experience as a software engineer. He's currently a Senior Software Engineer at TechCorp Solutions, previously worked at StartupXYZ and WebDev Agency. He's led microservices development, mentored junior developers, and built full-stack applications serving millions of users."
+            },
+            skills: {
+                keywords: ['skills', 'technologies', 'programming', 'languages', 'tech stack', 'tools'],
+                response: "Alex is proficient in JavaScript, TypeScript, Python, Java, and C++. He works with React, Vue.js, Node.js, and various databases like MongoDB and PostgreSQL. He's also experienced with cloud platforms like AWS and containerization with Docker."
+            },
+            projects: {
+                keywords: ['projects', 'portfolio', 'built', 'created', 'developed'],
+                response: "Alex has built several impressive projects including a full-stack e-commerce platform with payment integration, a real-time collaborative task management app, and a weather analytics API with machine learning predictions. All projects showcase his full-stack capabilities."
+            },
+            education: {
+                keywords: ['education', 'degree', 'university', 'college', 'study', 'learning', 'stanford', 'berkeley'],
+                response: "Alex has a Master of Science in Computer Science from Stanford University (2017-2019) with a specialization in Machine Learning & Distributed Systems. He also holds a Bachelor of Science in Software Engineering from UC Berkeley (2013-2017) with a minor in Mathematics, graduating Magna Cum Laude."
+            },
+            certificates: {
+                keywords: ['certificates', 'certifications', 'certified', 'aws', 'kubernetes', 'react', 'tensorflow'],
+                response: "Alex holds several industry certifications including AWS Solutions Architect Professional, Certified Kubernetes Administrator (CKA), Certified Ethical Hacker (CEH), TensorFlow Developer Certificate from Google, React Developer Certification from Meta, and Professional Scrum Master (PSM I)."
+            },
+            books: {
+                keywords: ['books', 'reading', 'literature', 'study', 'learn'],
+                response: "Alex has read several influential tech books including Clean Code by Robert Martin, System Design Interview by Alex Xu, The Pragmatic Programmer, Designing Data-Intensive Applications, You Don't Know JS series, Refactoring by Martin Fowler, and AI-focused books like Hands-On Machine Learning by Aurélien Géron, Deep Learning by Ian Goodfellow, and AI: A Modern Approach by Stuart Russell."
+            },
+            ai: {
+                keywords: ['ai', 'artificial intelligence', 'machine learning', 'ml', 'deep learning', 'neural networks'],
+                response: "Alex has strong expertise in AI and machine learning! He's proficient with TensorFlow, PyTorch, Scikit-learn, OpenAI API, and Hugging Face. He's built projects like an AI chatbot assistant and computer vision analytics system. He's also studied key AI books including Hands-On Machine Learning, Deep Learning, and AI: A Modern Approach."
+            },
+            contact: {
+                keywords: ['contact', 'email', 'reach', 'connect', 'hire', 'github', 'linkedin'],
+                response: "You can reach Alex at alex.chen@email.com, check out his code on GitHub at github.com/alexchen, or connect professionally on LinkedIn at linkedin.com/in/alexchen. He's always open to discussing new opportunities!"
+            },
+            personality: {
+                keywords: ['personality', 'person', 'character', 'who', 'about'],
+                response: "Alex is a passionate software engineer who loves solving complex problems with clean, efficient code. He's experienced in mentoring others, enjoys continuous learning, and stays up-to-date with the latest technologies and best practices."
+            }
+        };
+
+        function toggleChatbot() {
+            const chatbot = document.getElementById('chatbot');
+            chatbot.classList.toggle('hidden');
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message
+            addMessage(message, 'user');
+            
+            // Generate bot response
+            const response = generateResponse(message);
+            setTimeout(() => addMessage(response, 'bot'), 500);
+            
+            input.value = '';
+        }
+
+        function addMessage(message, sender) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'flex items-start space-x-2';
+            
+            if (sender === 'user') {
+                messageDiv.innerHTML = `
+                    <div class="chat-bubble-user text-white p-3 rounded-lg max-w-xs ml-auto">${message}</div>
+                    <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full flex items-center justify-center text-white text-sm">👤</div>
+                `;
+                messageDiv.classList.add('flex-row-reverse');
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-gradient-to-r from-pink-400 to-red-400 rounded-full flex items-center justify-center text-white text-sm">🤖</div>
+                    <div class="chat-bubble-bot text-white p-3 rounded-lg max-w-xs">${message}</div>
+                `;
+            }
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function generateResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            // Find matching category
+            for (const [category, data] of Object.entries(knowledgeBase)) {
+                if (data.keywords.some(keyword => lowerMessage.includes(keyword))) {
+                    return data.response;
+                }
+            }
+            
+            // Default responses for common greetings or unmatched queries
+            if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+                return "Hello! I'm here to help you learn about Alex Chen. You can ask me about his work experience, technical skills, projects, or how to get in touch with him.";
+            }
+            
+            return "That's an interesting question! I can tell you about Alex's work experience, technical skills, projects, the books he's read, or how to contact him. What would you like to know?";
+        }
+
+        // Allow Enter key to send messages
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'976c9dcbc705e286',t:'MTc1NjQ3NjQ2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
