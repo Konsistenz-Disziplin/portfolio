@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import os
-
+import json
 from pydantic import BaseModel
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -69,6 +69,7 @@ def rerun(reply, message, history, feedback):
     return response.choices[0].message.content
 def chat(message, history):
 
+    print("history:", history)
     system = system_prompt
     messages = [{"role": "system", "content": system}] + history + [{"role": "user", "content": message}]
     response = openai.chat.completions.create(model="gpt-4o-mini", messages=messages)
@@ -87,5 +88,6 @@ app = FastAPI()
 
 # API endpoint
 @app.get("/chatbot")
-def chatbot(message, history=[]):
+def chatbot(message, history="[]"):
+    history = json.loads(history)
     return {"result": chat(message, history)}
