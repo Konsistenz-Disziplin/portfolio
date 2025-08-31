@@ -13,13 +13,13 @@ for page in reader.pages:
     text = page.extract_text()
     if text:
         linkedin += text
-reader = PdfReader("me/Sandra-Hany-CV.pdf")
+reader = PdfReader("chatbot/me/Sandra-Hany-CV.pdf")
 cv = ""
 for page in reader.pages:
     text = page.extract_text()
     if text:
         cv += text
-with open("me/summary.txt", "r", encoding="utf-8") as f:
+with open("chatbot/me/summary.txt", "r", encoding="utf-8") as f:
     summary = f.read()
 name = "Sandra Hany"
 system_prompt = f"You are acting as {name}. You are answering questions on {name}'s website, \
