@@ -90,4 +90,6 @@ app = FastAPI()
 @app.get("/chatbot")
 def chatbot(message, history="[]"):
     history = json.loads(history)
-    return {"result": chat(message, history)}
+    res =  chat(message, history)
+    print("res:", res)
+    return {"result": res}

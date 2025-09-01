@@ -805,7 +805,7 @@
                     class="w-8 h-8 bg-gradient-to-r from-pink-400 to-red-400 rounded-full flex items-center justify-center text-white text-sm">
                     🤖</div>
                 <div class="chat-bubble-bot text-white p-3 rounded-lg max-w-xs">
-                    Hi! I'm Alex's AI assistant. Ask me about his experience, skills, projects, or anything else!
+                    Hi! I'm Sandra's AI assistant. Ask me about her experience, skills, projects, or anything else!
                 </div>
             </div>
         </div>
@@ -877,44 +877,6 @@
         }
 
         // Chatbot functionality
-        const knowledgeBase = {
-            experience: {
-                keywords: ['experience', 'work', 'job', 'career', 'employment', 'company'],
-                response: "Alex has 4+ years of experience as a software engineer. He's currently a Senior Software Engineer at TechCorp Solutions, previously worked at StartupXYZ and WebDev Agency. He's led microservices development, mentored junior developers, and built full-stack applications serving millions of users."
-            },
-            skills: {
-                keywords: ['skills', 'technologies', 'programming', 'languages', 'tech stack', 'tools'],
-                response: "Alex is proficient in JavaScript, TypeScript, Python, Java, and C++. He works with React, Vue.js, Node.js, and various databases like MongoDB and PostgreSQL. He's also experienced with cloud platforms like AWS and containerization with Docker."
-            },
-            projects: {
-                keywords: ['projects', 'portfolio', 'built', 'created', 'developed'],
-                response: "Alex has built several impressive projects including a full-stack e-commerce platform with payment integration, a real-time collaborative task management app, and a weather analytics API with machine learning predictions. All projects showcase his full-stack capabilities."
-            },
-            education: {
-                keywords: ['education', 'degree', 'university', 'college', 'study', 'learning', 'stanford', 'berkeley'],
-                response: "Alex has a Master of Science in Computer Science from Stanford University (2017-2019) with a specialization in Machine Learning & Distributed Systems. He also holds a Bachelor of Science in Software Engineering from UC Berkeley (2013-2017) with a minor in Mathematics, graduating Magna Cum Laude."
-            },
-            certificates: {
-                keywords: ['certificates', 'certifications', 'certified', 'aws', 'kubernetes', 'react', 'tensorflow'],
-                response: "Alex holds several industry certifications including AWS Solutions Architect Professional, Certified Kubernetes Administrator (CKA), Certified Ethical Hacker (CEH), TensorFlow Developer Certificate from Google, React Developer Certification from Meta, and Professional Scrum Master (PSM I)."
-            },
-            books: {
-                keywords: ['books', 'reading', 'literature', 'study', 'learn'],
-                response: "Alex has read several influential tech books including Clean Code by Robert Martin, System Design Interview by Alex Xu, The Pragmatic Programmer, Designing Data-Intensive Applications, You Don't Know JS series, Refactoring by Martin Fowler, and AI-focused books like Hands-On Machine Learning by Aurélien Géron, Deep Learning by Ian Goodfellow, and AI: A Modern Approach by Stuart Russell."
-            },
-            ai: {
-                keywords: ['ai', 'artificial intelligence', 'machine learning', 'ml', 'deep learning', 'neural networks'],
-                response: "Alex has strong expertise in AI and machine learning! He's proficient with TensorFlow, PyTorch, Scikit-learn, OpenAI API, and Hugging Face. He's built projects like an AI chatbot assistant and computer vision analytics system. He's also studied key AI books including Hands-On Machine Learning, Deep Learning, and AI: A Modern Approach."
-            },
-            contact: {
-                keywords: ['contact', 'email', 'reach', 'connect', 'hire', 'github', 'linkedin'],
-                response: "You can reach Alex at alex.chen@email.com, check out his code on GitHub at github.com/alexchen, or connect professionally on LinkedIn at linkedin.com/in/alexchen. He's always open to discussing new opportunities!"
-            },
-            personality: {
-                keywords: ['personality', 'person', 'character', 'who', 'about'],
-                response: "Alex is a passionate software engineer who loves solving complex problems with clean, efficient code. He's experienced in mentoring others, enjoys continuous learning, and stays up-to-date with the latest technologies and best practices."
-            }
-        };
         let chatHistory = JSON.parse(localStorage.getItem("chatHistory") || "[]");
 
         function toggleChatbot() {
