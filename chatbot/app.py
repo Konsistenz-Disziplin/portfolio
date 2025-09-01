@@ -5,6 +5,8 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 from openai import OpenAI
 from pypdf import PdfReader
+from fastapi.middleware.cors import CORSMiddleware
+
 load_dotenv(override=True)
 openai = OpenAI()
 reader = PdfReader("me/linkedin.pdf")
@@ -67,6 +69,8 @@ def rerun(reply, message, history, feedback):
     messages = [{"role": "system", "content": updated_system_prompt}] + history + [{"role": "user", "content": message}]
     response = openai.chat.completions.create(model="gpt-4o-mini", messages=messages)
     return response.choices[0].message.content
+
+
 def chat(message, history):
 
     print("history:", history)
@@ -85,6 +89,14 @@ def chat(message, history):
         reply = rerun(reply, message, history, evaluation.feedback)       
     return reply
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],   # or ["http://127.0.0.1:5500"]
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # API endpoint
 @app.get("/chatbot")
